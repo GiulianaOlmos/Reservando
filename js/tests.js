@@ -1,0 +1,20 @@
+var expect = chai.expect;
+
+//Test de la funcion Reservar Horario
+describe('Test de Reserva Horario', function(){
+	it('Desaparece el string', function(){
+		var nuevoRestaurant = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]);
+		nuevoRestaurant.reservarHorario("13:00");
+		expect(nuevoRestaurant.horarios).eql(["15:30", "18:00"]);
+	})
+	it('No hay cambios al reservar un horario inexistente', function(){
+		var nuevoRestaurant = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]);
+		nuevoRestaurant.reservarHorario("10:00");
+		expect(nuevoRestaurant.horarios).eql(["13:00", "15:30", "18:00"]);
+	})
+	it('No hay cambios al pasar un parametro vacio', function(){
+		var nuevoRestaurant = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]);
+		nuevoRestaurant.reservarHorario();
+		expect(nuevoRestaurant.horarios).eql(["13:00", "15:30", "18:00"]);
+	})
+});
