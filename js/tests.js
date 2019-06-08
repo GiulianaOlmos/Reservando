@@ -1,7 +1,7 @@
 var expect = chai.expect;
 
 //Test de la funcion Reservar Horario
-describe('Test de Reserva Horario', function(){
+describe('Test de Reservar Horario', function(){
 	it('Desaparece el string', function(){
 		var nuevoRestaurant = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]);
 		nuevoRestaurant.reservarHorario("13:00");
@@ -33,3 +33,15 @@ describe('Test de Reserva Horario', function(){
 		expect(nuevoRestaurant.horarios.length).to.equal(3);
 	})
 });
+describe("Test de la funcion ObtenerPuntuacion()", function(){
+	it("El calculo del promedio es correcto", function(){
+		var nuevoRestaurant = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]);
+		var resultado = nuevoRestaurant.obtenerPuntuacion();
+		expect(resultado).to.equal(7.4)
+	})
+	it("El calculo del promedio cuando no tiene notas es 0", function(){
+		var nuevoRestaurant = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", []);
+		var resultado = nuevoRestaurant.obtenerPuntuacion();
+		expect(resultado).to.equal(0);
+	})
+})
