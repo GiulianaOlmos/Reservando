@@ -77,3 +77,13 @@ describe("Test de la funcion calificar", function(){
 		expect(nuevoRestaurant.calificaciones).eql([6, 7, 9, 10, 5]);
 	})
 })
+describe("Testear la funcion buscarRestaurante(id)",function(){
+	it("No cambia la cantidad de elementos del arreglo al llamarlo", function(){
+		listado.buscarRestaurante(4);
+		expect(listadoDeRestaurantes.length).to.equal(24);
+	})
+	it("Al llamar un id inexistente el mensaje es el correcto", function(){
+		var restaurantInexistente = listado.buscarRestaurante(0);
+		expect(restaurantInexistente).eql('No se ha encontrado ningún restaurant')
+	})
+})
