@@ -45,3 +45,35 @@ describe("Test de la funcion ObtenerPuntuacion()", function(){
 		expect(resultado).to.equal(0);
 	})
 })
+describe("Test de la funcion calificar", function(){
+	it("Agregar calificaciones correctamente", function(){
+		var nuevoRestaurant = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]);
+		var cantidadCalificaciones = nuevoRestaurant.calificaciones.length;
+		nuevoRestaurant.calificar(5);
+		expect(nuevoRestaurant.calificaciones.length).to.equal(cantidadCalificaciones + 1);
+	})
+	it("Agregar calificacion 0 no modifica el arreglo", function(){
+		var nuevoRestaurant = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]);
+		var cantidadCalificaciones = nuevoRestaurant.calificaciones.length;
+		nuevoRestaurant.calificar(0);
+		expect(nuevoRestaurant.calificaciones.length).to.equal(cantidadCalificaciones);
+	})
+	it("Agregar calificacion mayor a 10 no modifica el arreglo", function(){
+		var nuevoRestaurant = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]);
+		var cantidadCalificaciones = nuevoRestaurant.calificaciones.length;
+		nuevoRestaurant.calificar(11);
+		expect(nuevoRestaurant.calificaciones.length).to.equal(cantidadCalificaciones);
+	})
+	it("Agregar calificacion vacia mantiene el arreglo igual", function(){
+		var nuevoRestaurant = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]);
+		var cantidadCalificaciones = nuevoRestaurant.calificaciones.length;
+		nuevoRestaurant.calificar();
+		expect(nuevoRestaurant.calificaciones).eql([6, 7, 9, 10, 5]);
+	})
+	it("Agregar calificacion 'string' mantiene el arreglo igual", function(){
+		var nuevoRestaurant = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]);
+		var cantidadCalificaciones = nuevoRestaurant.calificaciones.length;
+		nuevoRestaurant.calificar("hola");
+		expect(nuevoRestaurant.calificaciones).eql([6, 7, 9, 10, 5]);
+	})
+})
