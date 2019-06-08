@@ -87,3 +87,18 @@ describe("Testear la funcion buscarRestaurante(id)",function(){
 		expect(restaurantInexistente).eql('No se ha encontrado ningún restaurant')
 	})
 })
+describe("Testear la funcion obtenerRestaurantes()",function(){
+	it("No cambia la cantidad de elementos del arreglo al filtrar", function(){
+		listado.obtenerRestaurantes("Asiática", "Londres", "13:00")
+		expect(listadoDeRestaurantes.length).to.equal(24);
+	})
+	it("Si los parametros son vacios el listado de restaurantes se mantiene igual", function(){
+		listado.obtenerRestaurantes();
+		expect(listadoDeRestaurantes.length).to.equal(24);
+	})
+	it("El filtro funciona de manera correcta", function(){
+		var restaurantFiltrado = listado.obtenerRestaurantes("Asiática", "Londres", "15:00")
+		expect(restaurantFiltrado.length).to.equal(1);
+	})
+})
+
