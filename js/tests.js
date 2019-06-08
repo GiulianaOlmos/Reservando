@@ -100,5 +100,6 @@ describe("Testear la funcion obtenerRestaurantes()",function(){
 		var restaurantFiltrado = listado.obtenerRestaurantes("Asiática", "Londres", "15:00")
 		expect(restaurantFiltrado.length).to.equal(1);
 	})
+	
 })
 

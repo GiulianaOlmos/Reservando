@@ -8,14 +8,21 @@ var Restaurant = function(id, nombre, rubro, ubicacion, horarios, imagen, califi
     this.calificaciones = calificaciones;
 }
 
-Restaurant.prototype.reservarHorario = function(horarioReservado) {
+/* Restaurant.prototype.reservarHorario = function(horarioReservado) {
     for (var i = 0; i < this.horarios.length; i++) {
         if (this.horarios[i] === horarioReservado) {
             this.horarios.splice(i, 1);
             return;
         }
     }
+} */
+Restaurant.prototype.reservarHorario = function(horarioReservado){
+    var horariosRestantes = this.horarios.filter(function(horario){
+        return horario !== horarioReservado;
+    });
+    this.horarios = horariosRestantes;
 }
+
 
 Restaurant.prototype.calificar = function(nuevaCalificacion) {
     if (Number.isInteger(nuevaCalificacion) && nuevaCalificacion > 0 && nuevaCalificacion < 10) {
