@@ -35,25 +35,29 @@ Listado.prototype.obtenerUbicaciones = function() {
         ciudades.push(this.restaurantes[i].ubicacion);
     }
     //Se crea un nuevo array donde se van a agregar las ciudades pero sin repetirse
-    var ciudadesSinRepeticion = ciudades.filter(function(elem, index, self) {
+    /* var ciudadesFiltradas = ciudades.filter(function(elem, index, self) {
         return index === self.indexOf(elem);
     });
 
-    return ciudadesSinRepeticion.sort();
+    return ciudadesFiltradas.sort(); */
+    return this.filtrarElementos(ciudades).sort();
+    
 }
 
-//Obtiene todos los rubros de los restaurantes sin repetidos. Su funcionamiento es similar a obtC()
+//Obtiene todos los rubros de los restaurantes sin repetidos. Su funcionamiento es similar a obtenerUbicaciones()
 Listado.prototype.obtenerRubros = function() {
     var rubros = [];
     for (var i = 0; i < this.restaurantes.length; i++) {
         rubros.push(this.restaurantes[i].rubro);
     }
 
-    var rubrosFiltrados = rubros.filter(function(elem, index, self) {
+    /* var rubrosFiltrados = rubros.filter(function(elem, index, self) {
         return index === self.indexOf(elem);
     });
 
-    return rubrosFiltrados.sort();
+    return rubrosFiltrados.sort(); */
+    return this.filtrarElementos(rubros).sort();
+    
 }
 
 //Obtiene todos los horarios de los restaurantes (sin repetidos). Está funcionalidad es un poco más compleja ya que un restaurante
@@ -69,18 +73,26 @@ Listado.prototype.obtenerHorarios = function() {
 
     //En este arreglo vamos a poner todos los horarios, uno por uno
     var horarios = [];
-    arregloHorarios.forEach(function(elementoHorario) {
-        elementoHorario.forEach(function(horario) {
-            horarios.push(horario)
+    arregloHorarios.forEach(function(horario) {
+        horario.forEach(function(hora) {
+            horarios.push(hora)
         });
     });
 
     //En este arreglo vamos a poner todos los horarios pero sin repetidos
-    var horariosSinRepetir = horarios.filter(function(elem, index, self) {
+    /* var horariosFiltrados = horarios.filter(function(elem, index, self) {
         return index === self.indexOf(elem);
     });
 
-    return horariosSinRepetir.sort();
+    return horariosFiltrados.sort(); */
+    return this.filtrarElementos(horarios).sort();
+}
+
+//Funcion para filtrar elementos repetidos
+Listado.prototype.filtrarElementos = function(arregloAFiltrar){
+    return arregloAFiltrar.filter(function(elem, index, self) {
+        return index === self.indexOf(elem);
+    });
 }
 
 //Función que recibe los filtros que llegan desde el HTML y filtra el arreglo de restaurantes.
