@@ -102,4 +102,26 @@ describe("Testear la funcion obtenerRestaurantes()",function(){
 	})
 	
 })
+describe("Testear el objeto Reserva", function(){
+	it("El precio base de la reserva 1 es correcto",function(){
+		var reserva1 = new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "DES1");
+		var precioBase = reserva1.calcularPrecioBase();
+		expect(precioBase).to.equal(2800);
+	})
+	it("El precio final de la reserva 1 es correcto",function(){
+		var reserva1 = new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "DES1");
+		var precioFinal = reserva1.calcularPrecioFinal();
+		expect(precioFinal).to.equal(2310);
+	})
+	it("El precio base de la reserva 2 es correcto",function(){
+		var reserva2 = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200")
+		var precioBase = reserva2.calcularPrecioBase();
+		expect(precioBase).to.equal(300);
+	})
+	it("El precio final de la reserva 2 es correcto",function(){
+		var reserva2 = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200")
+		var precioFinal = reserva2.calcularPrecioFinal();
+		expect(precioFinal).to.equal(100);
+	})
+})
 

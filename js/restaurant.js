@@ -31,7 +31,7 @@ Restaurant.prototype.calificar = function(nuevaCalificacion) {
     }
 }
 
-Restaurant.prototype.obtenerPuntuacion = function(sumatoria) {
+Restaurant.prototype.obtenerPuntuacion = function() {
     if (this.calificaciones.length === 0) {
         return 0;
     } else {
